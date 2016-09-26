@@ -139,7 +139,7 @@ class Daemon:
         """
         BlenderVR_modules = self._BlenderVR_modules
         if command == 'blender_player':
-            self._executable = argument['executable']
+            self._executable = os.path.expanduser(argument['executable'])
             self._executable_options = argument['options']
             self._environment = argument['environments']
             if 'PYTHONPATH' in self._environment:
