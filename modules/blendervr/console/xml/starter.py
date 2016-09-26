@@ -35,6 +35,7 @@
 
 from . import common_system
 import sys
+import os
 
 class XML(common_system.XML):
 
@@ -48,7 +49,7 @@ class XML(common_system.XML):
         else:
             self._hostname = None
         if 'blender' in attrs:
-            self._blender = attrs['blender']
+            self._blender = os.path.expanduser(attrs['blender'])
         else:
             self._blender = None
 
