@@ -45,13 +45,13 @@ This script runs in the clients and is responsible for spawning the
 Blender Player.
 
 Using the BlenderVR root (relative to this script dir or given via
-command line), it setup the Python PATH to make blendervr package (
+command line), it sets up the Python PATH to make blendervr package (
 from modules subdir) available,
 
-*Important*: it store the ``BlenderVR_root`` variable inside builtins, so that
+*Important*: it stores the ``BlenderVR_root`` variable inside builtins, so that
 all scripts can access it.
 
-Then it import BlenderVR module from utils directory and start its
+Then it imports BlenderVR module from utils directory and starts its
 main() function.
 """
 import sys
@@ -61,18 +61,25 @@ import builtins
 if sys.platform.startswith("win"):
     path = os.path.join(os.environ['APPDATA'])
 elif sys.platform == 'darwin':
-    path = os.path.join(os.path.expanduser('~'), 'Library',
-                                        'Application Support')
-else: # Unix ...
+    path = os.path.join(
+        os.path.expanduser('~'), 'Library', 'Application Support'
+    )
+else:  # Unix ...
     path = os.path.join(os.path.expanduser('~'), '.config')
+
 path = os.path.join(path, 'blender')
 
-if not os.path.isdir(path): os.makedirs(path)
+if not os.path.isdir(path):
+    os.makedirs(path)
 
 profile_file = os.path.join(path, 'vr', 'profile_1.0.pickle')
 
 builtins.BlenderVR_profilePath = os.path.join(path, 'vr', 'modules')
-if not os.path.isdir(BlenderVR_profilePath): os.makedirs(BlenderVR_profilePath)
+
+
+if not os.path.isdir(BlenderVR_profilePath):
+    os.makedirs(BlenderVR_profilePath)
+
 
 def isValidRoot(root):
     """Check if a given path is valid as BlenderVR root.
