@@ -65,6 +65,7 @@ def getProcessor():
 
     if not _processor_files:
         return Processor
+    print(_processor_files)
     processor_file = _processor_files.pop(0)
 
     if processor_file is None:

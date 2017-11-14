@@ -84,8 +84,7 @@ class UI(argument_handler.Argument_handler):
         SCREEN = 3
 
         #check for the configuration file, and check if it's valid. if it isn't kill the program. if it is load it and continue
-        if os.path.isfile(self.launch_data[CONFIG]) and self.launch_data[CONFIG].endswith('.xml') \
-                and self.change_config_file(self.launch_data[CONFIG], self.launch_data[SCREEN], True):
+        if self.change_config_file(self.launch_data[CONFIG], self.launch_data[SCREEN], True):
 
             #if the screen set is in the possible screen sets, change it. If it isn't kill program
             if self.launch_data[SCREEN] in self._possibleScreenSets and \

@@ -47,7 +47,7 @@ import sys
 import subprocess
 
 
-class Logic:
+class Logic(object):
     def __init__(self):
         self._possibleScreenSets = None
         self._anchor = None
@@ -90,11 +90,10 @@ class Logic:
             elif configuration_path not in configuration_paths:
                 configuration_paths.append(configuration_path)
 
-            previous_common_processors = self._common_processors
-
             from .. import xml
-            config = xml.Configure(self, configuration_paths,
-                                         configuration_file)
+            config = xml.Configure(
+                self, configuration_paths, configuration_file
+            )
             self._configuration = config.getConfiguration()
             starter = self._configuration['starter']
             self._net_console = starter['hostname'] + ':' + str(self._port)

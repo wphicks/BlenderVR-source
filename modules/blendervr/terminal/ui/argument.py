@@ -49,7 +49,7 @@ import _thread
 
 #TODO Linking capabilities (Should be pretty easy but i don't think it would be very useful)
 
-class Argument_handler():
+class Argument_handler(object):
 
     def __init__(self, parent=None):
 
